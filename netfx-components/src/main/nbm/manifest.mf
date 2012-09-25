@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Layer: org/netfx/components/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/netfx/components/Bundle.properties
+OpenIDE-Module-Requires: org.openide.windows.WindowManager
