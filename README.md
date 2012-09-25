@@ -1,0 +1,4 @@
+netfx
+=====
+
+NetBeans RCP + JavaFX 
