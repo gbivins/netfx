@@ -8,7 +8,7 @@
   </parent>
 
     <artifactId>node-interactor</artifactId>
-    <packaging>bundle</packaging>
+    <packaging>nbm</packaging>
 
     <name>${project.artifactId} (${project.version})</name>
 
@@ -18,13 +18,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.osgi.core</artifactId>
-            <version>1.4.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
+        <groupId>${project.groupId}</groupId>
             <artifactId>javafx-wrapper</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -32,21 +26,42 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.3.7</version>
+           <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>nbm-maven-plugin</artifactId>
+                <version>3.7</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <instructions>
-                        <Bundle-Activator>org.netfx.node.interactor.Activator</Bundle-Activator>
-                    </instructions>
+                    <useOSGiDependencies>true</useOSGiDependencies>
+                    <publicPackages>
+                        <publicPackage>org.netfx.node</publicPackage>
+                    </publicPackages>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- NetBeans 6.9+ requires JDK 6 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <!-- to have the jar plugin pickup the nbm generated manifest -->
+                    <useDefaultManifestFile>true</useDefaultManifestFile>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <profiles>
+<!--    <profiles>
         <profile>
             <id>build-for-felix</id>
             <dependencies>
@@ -56,13 +71,13 @@
                     <version>4.0.3</version>
                     <scope>provided</scope>
                 </dependency>
-                <!-- To include a shell:
+                 To include a shell:
                 <dependency>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>org.apache.felix.gogo.shell</artifactId>
                     <version>0.6.1</version>
                 </dependency>
-                -->
+                
             </dependencies>
             <build>
                 <plugins>
@@ -134,7 +149,7 @@
                     <version>4.0.3</version>
                     <scope>provided</scope>
                 </dependency>
-                <!-- org.apache.felix:org.apache.felix.gogo.shell:0.6.1 useless from Maven since stdin is swallowed -->
+                 org.apache.felix:org.apache.felix.gogo.shell:0.6.1 useless from Maven since stdin is swallowed 
             </dependencies>
             <build>
                 <plugins>
@@ -170,5 +185,5 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+    </profiles>-->
 </project>
