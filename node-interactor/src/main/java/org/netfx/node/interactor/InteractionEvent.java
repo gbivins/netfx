@@ -25,6 +25,7 @@ public class InteractionEvent<N extends Node> extends Event
    public static final EventType<InteractionEvent> DRAG_INTERACTION             = new EventType("DragNode");
    public static final EventType<InteractionEvent> PRESSED_INTERACTION          = new EventType("PressedNode");
    public static final EventType<InteractionEvent> RELEASED_INTERACTION = new EventType("ReleasedNode");
+   public static final EventType<InteractionEvent> HOVER_INTERACTION = new EventType("HoveredNode");
    private double                                  mouseDelta[]                 = { 0, 0, 0 };
    private double                                  initialInteractionPosition[] = { 0, 0, 0 };
    private N                                       interactionNode              = null;

@@ -31,10 +31,10 @@ public class NodeInteractor implements Interactorable
    private NodeDragEventHandler    dragEventHandler    = null;
    private NodePressEventHandler   pressEventHandler   = null;
    private NodeReleaseEventHandler releaseEventHandler = null;
-   private Node                    interactiveNode     = null;
-   private Point2D                 mouseAnchor         = null;
-   private double                  nodePosition[]      =
-   {
+    private Node interactiveNode = null;
+    private NodeHoverEventHander hoverEventHandler = null;
+    private Point2D mouseAnchor = null;
+    private double nodePosition[] = {
       0,
       0   /*,0*/
    };
@@ -51,9 +51,11 @@ public class NodeInteractor implements Interactorable
       pressEventHandler   = new NodePressEventHandler();
       releaseEventHandler = new NodeReleaseEventHandler();
 
+        hoverEventHandler = new NodeHoverEventHander();
       interactiveNode.setOnMouseDragged(dragEventHandler);
       interactiveNode.setOnMousePressed(pressEventHandler);
       interactiveNode.setOnMouseReleased(releaseEventHandler);
+        interactiveNode.setOnMouseMoved(hoverEventHandler);
    }
 
 
@@ -102,6 +104,33 @@ public class NodeInteractor implements Interactorable
    }
 
 
+    class NodeHoverEventHander implements EventHandler<MouseEvent> {
+
+        @Override
+        public void handle(MouseEvent me) {
+            mouseAnchor = new Point2D(me.getX(), me.getY());
+
+            updateMouseDelta(me);
+
+            nodePosition[0] = interactiveNode.getTranslateX();
+            nodePosition[1] = interactiveNode.getTranslateY();
+
+            state.setNodePosition(nodePosition);
+            state.setMouseDelta(mouseDelta);
+
+            double[] anchor = new double[2];
+
+            anchor[0] = mouseAnchor.getX();
+            anchor[1] = mouseAnchor.getY();
+
+            state.setMouseAnchor(anchor);
+            state.setMousePosition(0, me.getX());
+            state.setMousePosition(1, me.getY());
+            state.setMouseDragLastPosition(0, me.getX());
+            state.setMouseDragLastPosition(1, me.getY());
+            fireInteractionStateChange(interactiveNode, state, InteractionEvent.HOVER_INTERACTION);
+        }
+    }
    class NodeDragEventHandler implements EventHandler<MouseEvent>
    {
       @Override
