@@ -28,4 +28,6 @@ import javafx.scene.Node;
 public interface InteractorHandler<N extends Node> extends EventListener
 {
    void interact(N node, EventType<InteractionEvent> type, NodeInteractionState state);
+   boolean isActive();
+   void setActive(boolean active);
 }
