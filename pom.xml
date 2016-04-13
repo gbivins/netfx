@@ -10,7 +10,7 @@
     <name>${project.artifactId} [${project.version}]</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <netbeans.version>RELEASE72</netbeans.version>
+        <netbeans.version>RELEASE81</netbeans.version>
         <javafx.version>2.2</javafx.version>
     </properties>
     <repositories>
@@ -50,7 +50,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>nbm-maven-plugin</artifactId>
-                    <version>3.7</version>
+                    <version>4.1</version>
                     <configuration>
                         <cluster>netfx_suite</cluster>
                         <useOSGiDependencies>true</useOSGiDependencies>
@@ -60,10 +60,10 @@
                     <!-- NetBeans 6.9+ requires JDK 6 -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.5.1</version>
+                    <version>3.3</version>
                     <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
+                        <source>1.8</source>
+                        <target>1.8</target>
                     </configuration>
                 </plugin>
             </plugins>
@@ -72,12 +72,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>3.3</version>
                 <configuration>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
-            <plugin>
+<!--            <plugin>
                 <groupId>com.savage7.maven.plugins</groupId>
                 <artifactId>maven-external-dependency-plugin</artifactId>
                 <version>0.5</version>
@@ -91,8 +91,8 @@
                     <force>true</force>
                     <artifactItems>
 
-                        <!-- THIS JAR IS HOSTED ON GOOGLE CODE, BUT IS NOT AVAILABLE IN A MAVEN 
-                        REPO -->
+                         THIS JAR IS HOSTED ON GOOGLE CODE, BUT IS NOT AVAILABLE IN A MAVEN 
+                        REPO 
                         <artifactItem>
                             <groupId>com.oracle</groupId>
                             <artifactId>javafx</artifactId>
@@ -112,7 +112,7 @@
                         <id>clean-external-dependencies</id>
                         <phase>clean</phase>
                         <goals>
-                            <!--                                                     mvn com.savage7.maven.plugins:maven-external-dependency-plugin:clean-external -->
+                                                                                 mvn com.savage7.maven.plugins:maven-external-dependency-plugin:clean-external 
                             <goal>clean-external</goal>
                         </goals>
                     </execution>
@@ -120,10 +120,10 @@
                         <id>resolve-install-external-dependencies</id>
                         <phase>process-resources</phase>
                         <goals>
-                            <!--                                                     mvn com.savage7.maven.plugins:maven-external-dependency-plugin:resolve-external -->
+                                                                                 mvn com.savage7.maven.plugins:maven-external-dependency-plugin:resolve-external 
                             <goal>resolve-external</goal>
 
-                            <!--                                                     mvn com.savage7.maven.plugins:maven-external-dependency-plugin:install-external -->
+                                                                                 mvn com.savage7.maven.plugins:maven-external-dependency-plugin:install-external 
                             <goal>install-external</goal>
                         </goals>
                     </execution>
@@ -131,12 +131,12 @@
                         <id>deploy-external-dependencies</id>
                         <phase>deploy</phase>
                         <goals>
-                            <!--                                                     mvn com.savage7.maven.plugins:maven-external-dependency-plugin:deploy-external -->
+                                                                                 mvn com.savage7.maven.plugins:maven-external-dependency-plugin:deploy-external 
                             <goal>deploy-external</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
         
     </build>
@@ -166,7 +166,7 @@
     <modules>
         <module>netfx-components</module>
     <module>node-interactor</module>
-    <module>javafx-wrapper</module>
+    <!--<module>javafx-wrapper</module>-->
     <!--<module>test-nodes</module>-->
     <module>netfx-annotations</module>
     <module>netfx-data</module>

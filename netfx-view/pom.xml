@@ -55,11 +55,11 @@
             <type>jar</type>
             <version>${netbeans.version}</version>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <artifactId>javafx-wrapper</artifactId>
             <groupId>org.netfx</groupId>
             <version>2.2-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <artifactId>org-openide-explorer</artifactId>
             <groupId>org.netbeans.api</groupId>

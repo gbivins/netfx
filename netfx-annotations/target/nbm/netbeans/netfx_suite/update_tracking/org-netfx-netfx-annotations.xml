@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netfx.netfx.annotations">
+    <module_version install_time="1460512656648" last="true" origin="installer" specification_version="1.0">
+        <file crc="456692746" name="config/Modules/org-netfx-netfx-annotations.xml"/>
+        <file crc="1526390291" name="modules/org-netfx-netfx-annotations.jar"/>
+    </module_version>
+</module>
